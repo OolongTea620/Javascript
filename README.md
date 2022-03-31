@@ -64,5 +64,76 @@ Symbol 문법
 [x] 일치 연산자 (===, !==) 엄격한 연산자로, 값과 데이터타입 둘 다 같은지를 확인한다.
 
 #### 주요 연신자
+1. 증감연산자
   - 변수++ : 변수에서 먼저 값을 꺼내고 그 다음에 1을 더함
   - ++변수 : 변수 값에 1을 더한 뒤 값을 꺼냄
+2. 대입 연산자
+  = 으로 데이터를 변수에 대입할 수 있음
+  example
+    let value10 = 10;
+    value10 += 1; //11
+    value10 -= 1; //9
+    value10 *= 5; //50
+    value10 /= 5; //2
+    valeu10 /= 3; //3.3333333333333335
+3. 논리 연산자
+- ! : NOT
+- && : END
+- || : OR
+4. 문자열 연산
++ 문자열을 합칠 수 있음
+
+5. 조건문
+5-1. if, else if , else 
+ex) 조건이 참인경우, {} 안의 문장이 실행된다.
+  if (조건 1) {
+    코드;
+  } 
+  else if (조건 2){
+    코드;
+  }
+  else {
+    조건1,2, 모두 아닌경우;
+  }
+5-2. switch문
+ex) 조건이 맞는 case문이 있다면 switch 내부 해당 case 아래의 모든 코드를 실행한다.
+switch (age) {
+  case 12: //age = 12인 경우
+    break;
+  case 13:
+    break;
+  default: // case의 모든 경우 맞지 않은 경우 실행되는 문장
+    break;
+}
+6. 함수
+- 문법
+  function 함수이름(함수인자) {
+    함수 실행 코드
+  }
+ - return 키워드를 사용
+ ex)
+ function FunCoding(name) {
+  return name + "like Coding !" ;
+ }
+ console.log(FunCoding("Hyelin"));
+++ ES6 화살표 함수 (Arrow function '=>') 선언
+- 함수 선언을 보다 간단하게 하기 위해서 고안된 문법
+- 화살표 함수는 ++익명함수++ 임 
+- 따라서 익명 함수를 호출하기 위해서 변수에 대입하는 경우가 많음
+
+- 함수 인자가 하나뿐이라면 () 생략가능
+- 함수 코드가 한 라인이면 코드블록기호(중괄호) 및 return 키워드 생략가능
+- 예시
+  let func = (함수인자) => expression
+  은 다음과 동일하다
+  let func = function(함수인자) { 
+    return expression;
+  }
+  let f1 = (함수인자) => statements;
+  은 다음과 동일하다
+  let f1 = function(함수인자) {
+    statements;
+  }
+  
+  
+ 
