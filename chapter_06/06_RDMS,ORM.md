@@ -344,3 +344,94 @@ User.destroy({
   where : [ id : {[[Op.in] : [1,3,5]]}]
 });
 ```
+
+## 관계 쿼리
+
+결과값이 자바스크립트 객체임
+```javascript
+const user = await User.findOne({});
+console.log(user.nick); // 사용자 닉네임
+```
+include로 JOIN과 비슷한 기능 수행 가능(관계 있는 것 엮을 수 있음)
+```javascript
+const user = await User.findOne({
+  include: [{
+    model : Comment,
+  }]
+});
+console.log(user.Comments); // 사용자 댓글
+//Comments인 이유는 일대다 관계 (유저 : 댓글) 관계이기 때문에 **복수형**
+```
+다대다 모델은 다음과 같이 접근 가능
+```javascript
+/*
+* model/
+*/
+db.Post.belongsToMany(db.HashTag, {through: "PostHashTag"}); 
+...
+
+/* 모델 선언 시 사용했던 through 키워드를 사용한다.*/
+db.sequelize.models.PostHashtag
+```
+
+get+[모델명]으로 관계있는 데이터 로딩 가능
+```javascript
+const user = await User.findOne({});
+const comments = await user.getComments();// 일대다 관계라 관계라서 자동으로 복수형으로 쓰여짐
+```
+as로 모델명 변경 가능
+```javascript
+// 관계설정할 때 as로 등록
+db.User.hasMany(db.Comment, { foreignKey:'commenter', sourceKey: 'id'm as: 'Answers'});
+// 쿼리 할 때 
+const user = await User.findOne({});
+const comments await user.getAnswers();
+console.log(comments);// 사용자 댓글
+```
+include나 관계 쿼리 메서드에서도 where나 attributes 지정가능
+```javascript
+/*
+* comment id 가 1인 것을 찾는것
+*/
+const user = await User.findOne({
+  include: [{
+    model : Comment,
+    where : {
+      id : 1
+    },
+    attributes : ['id'],
+  }]
+});
+// 또는
+const comments = await user.getComments({
+  where : {
+    id : 1,
+  },
+  attributes : ['id'],
+});
+```
+생성 쿼리
+```javascript
+// add[모델명] 미리 만들어줌
+const user = await User.findOne({});
+const comment = await Comment.create();
+await user.addComment(comment);
+
+//또는 
+await user.addComment(comment.id); //미리 유저 아이디를 생성
+```
+여러개를 추가할 때는 배열로 추가가능
+```javascript
+const user = await User.findOne({});
+const comment1 = await Comment.create();
+const comment2 = await Comment.create();
+await user.addComment([comment1,comment2]);
+```
+
+수정은 set+[모델명], 삭제는 remove모델명
+
+직접 SQL을 쓸 수 있음
+```javascript
+const [result, metadata] = await sequelize.query('SELECT * from Comments');
+console.log(result);
+```
