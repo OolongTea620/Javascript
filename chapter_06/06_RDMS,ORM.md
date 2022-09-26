@@ -54,11 +54,11 @@ GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost' WITH GRANT OPTION;
 
 #### 데이터 베이스 만들기
 ```SQL
-
+CREATE DATABASE [데이터 베이스명] default CHARACTER SET UTF8;
 ``` 
 #### DB 사용하기
 ```SQL
-
+USE [데이터베이스명];
 ```
 #### Table 생성하기 
 ```SQL

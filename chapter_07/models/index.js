@@ -11,14 +11,13 @@ const sequelize = new Sequelize(
   config.username,
   config.password,
   config
-); // 설정 연결
+);
 
 db.sequelize = sequelize;
 db.User = User;
 db.Post = Post;
 db.Hashtag = Hashtag;
 
-// 모델 객체 생성
 User.init(sequelize);
 Post.init(sequelize);
 Hashtag.init(sequelize);
