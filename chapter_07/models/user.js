@@ -44,7 +44,7 @@ module.exports = class User extends Sequelize.Model {
     db.User.hasMany(db.Post);
     db.User.belongsToMany(db.User, {
       foreignKey: "followingId",
-      as: "Followers", // 컬럼에 대한 별명
+      as: "Followers", // 컬럼에 대한 별명 :
       through: "Follow",
     });
     db.User.belongsToMany(db.User, {
