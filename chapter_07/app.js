@@ -15,7 +15,7 @@ const { sequelize } = require("./models");
 const passportConfig = require("./passport");
 
 const app = express();
-app.set("port", process.env.PORT || 8001);
+app.set("port", process.env.PORT || 3001);
 app.set("view engine", "html");
 nunjucks.configure("views", {
   express: app,
@@ -23,10 +23,6 @@ nunjucks.configure("views", {
 });
 sequelize
   .sync({ force: false })
-  /**
-   * force : true -> 테이블이 다시 지워졌다가 다시 생성됨(데이터 날라감)
-   * alter : true -> 컬럼 변경을 반영 : 컬럼과 기존데이터 구조 불일치로 오류 가능성
-   */
   .then(() => {
     console.log("데이터 베이스 연결 성공");
   })

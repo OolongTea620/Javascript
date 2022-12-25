@@ -42,24 +42,28 @@ ES6에서 추가된 타입
 Symbol은 unique한 값을 만듦
 Symbol 문법
   
-#### typeof 
-- 변수의 데이터 타입을 확인하기 위한문법
-> 사용방법
+#### **typeof** 
+- 변수의 데이터 타입을 확인하기 위한문법  
+사용방법  
+  ```javascript
   const testValue1 = 1; 
   console.log(typeof testValue1); // number
   let testValue2 = "test";
   console.log(typeof testValue2); // string
   let testValue3 = 1 < 2; // true가 들어간다
-  console.log(typeof testValue3) // boolean
+  console.log(typeof testValue3) // boolean```
 
-#### 데이터 타입 변환
-1. Number(): Number 타입으로 변환
-2. parseInt(): Number 타입으로 변환하지만 정수로 만듦
-3. parseFloat(): Number 타입으로 변환 부동 소숫점까지 그대로 데이터 변환
-4. String(): String타입으로 변환
-5. Boolean() Boolean 타입으로 변환
+#### **데이터 타입 변환**
+|     함수     | 설명                                                    |
+| :----------: | :------------------------------------------------------ |
+|   Number()   | Number 타입으로 변환                                    |
+|  parseInt()  | Number 타입으로 변환하지만 **정수로 만듦**              |
+| parseFloat() | Number 타입으로 변환 부동 소숫점까지 그대로 데이터 변환 |
+|   String()   | String타입으로 변환                                     |
+|  Boolean()   | Boolean 타입으로 변환                                   |
 
-#### 동등 연산자(==)와 일치 연산자(===)
+#### **동등 연산자(==)와 일치 연산자(===)**
+
 [] 동등 연산자 (==, !=) 관대한 연산자로, 기본적으로 값만 같은지 확인한다.
 [x] 일치 연산자 (===, !==) 엄격한 연산자로, 값과 데이터타입 둘 다 같은지를 확인한다.
 
